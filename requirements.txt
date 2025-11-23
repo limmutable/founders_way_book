@@ -1,0 +1,20 @@
+# Core Python dependencies for book authoring and AI tooling
+
+# Core data & modeling
+pandas>=1.5
+numpy>=1.23
+scipy>=1.9
+matplotlib>=3.6
+
+# Notebooks (optional)
+jupyterlab>=3.5
+
+# AI/LLM integration
+litellm
+python-dotenv
+openai>=1.0
+anthropic
+
+# Google AI
+google-auth
+google-generativeai

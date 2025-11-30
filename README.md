@@ -39,14 +39,23 @@ founders_way_book/
 ├── .gitignore                   # Git ignore rules
 ├── .env.example                 # Environment variables template
 │
-├── docs/                        # Book chapters (main content)
-│   └── [To be created]
+├── docs/                        # Book chapters (79 sub-chapter files)
+│   ├── 00-prologue.md
+│   ├── 01-the-founders-condition-01-introduction.md
+│   ├── 01-the-founders-condition-02-*.md
+│   ├── 02-startup-and-idea-01-introduction.md
+│   └── ... (organized by chapter prefix)
+│
+├── original_text/               # Original full-chapter markdown files
+│   ├── Module-01-*.md through Module-07-*.md
+│   └── original-text.md
 │
 ├── templates/                   # Reusable templates
-│   └── [To be created]
+│   └── chapter-template.md
 │
 ├── scripts/                     # Python automation tools
-│   └── [To be created]
+│   ├── split_chapters.py       # Split chapters into sub-chapters
+│   └── content_stats.py        # Generate content statistics
 │
 ├── .venv/                       # Python virtual environment (local)
 ├── requirements.txt             # Python dependencies
@@ -125,11 +134,16 @@ The `.context/` directory contains shared state across agents:
 
 ### File Naming Conventions
 
-**Chapter content files:** `kebab-case` with numeric prefix
-- `01-introduction.md`
-- `02-key-concepts.md`
-- `22-qa.md`
-- `23-key-takeaways.md`
+**Sub-chapter files:** All chapters are split into sub-chapter files in a flat structure within `docs/`
+
+Format: `##-chapter-name-##-sub-chapter-title.md`
+
+Examples:
+- `00-prologue.md` (single file, no sub-chapters)
+- `01-the-founders-condition-01-introduction.md`
+- `01-the-founders-condition-02-나는-창업가일까.md`
+- `02-startup-and-idea-01-introduction.md`
+- `02-startup-and-idea-02-아이디어는-시작일-뿐.md`
 
 **Documentation:** UPPERCASE or lowercase_underscore
 - `README.md`
@@ -137,25 +151,30 @@ The `.context/` directory contains shared state across agents:
 
 ### Chapter Structure
 
-Each chapter follows this pattern:
+The book is organized into **8 chapters** with **79 total files** (including prologue):
 
-```
-docs/ChapterName/
-├── 01-title.md
-├── 02-introduction.md
-├── 03-[topic].md
-├── ...
-├── [N-1]-qa.md
-├── [N]-key-takeaways.md
-└── [N+1]-recommended-readings.md
-```
+- **Chapter 00:** Prologue (1 file)
+- **Chapter 01:** The Founder's Condition (10 sub-chapters)
+- **Chapter 02:** Startup and Idea (9 sub-chapters)
+- **Chapter 03:** Market and Competition (10 sub-chapters)
+- **Chapter 04:** The Founder's Work (20 sub-chapters)
+- **Chapter 05:** Reverse Startup Practice (12 sub-chapters)
+- **Chapter 06:** Problems Founders Must Solve (6 sub-chapters)
+- **Chapter 07:** Appendix - Unicorn Fundraising (11 sub-chapters)
 
-### Creating New Chapters
+All sub-chapter files are located directly in the `docs/` directory. Original full-chapter files are preserved in `original_text/` for reference.
 
-1. Create directory: `mkdir docs/chapter-name`
-2. Start with standard files: `01-title.md`, `02-introduction.md`
-3. Follow templates in `.claude/CLAUDE.md` and `.gemini/GEMINI.md`
-4. Update this README with chapter progress
+### Working with Chapters
+
+**To view a chapter:** Browse files in `docs/` with the same chapter prefix (e.g., `01-*` for Chapter 01)
+
+**To add new sub-chapters:**
+1. Follow the naming convention: `##-chapter-name-##-sub-chapter-title.md`
+2. Use the next sequential number for the sub-chapter
+3. Include an H1 heading: `# ##-## – Sub-chapter Title`
+4. Follow templates in `.claude/CLAUDE.md` and `.gemini/GEMINI.md`
+
+**To reorganize chapters:** Use the `scripts/split_chapters.py` tool to re-split chapters from original files
 
 ---
 
@@ -217,9 +236,16 @@ When opening this project with AI assistants:
 
 ## Project Status
 
-**Version:** 0.1  
-**Last Updated:** November 2024  
-**Status:** Initial setup complete, ready for content creation
+**Version:** 0.2
+**Last Updated:** November 30, 2024
+**Status:** Content structure organized, 79 sub-chapters created
+
+### Content Summary
+
+- ✅ **79 sub-chapter files** created across 8 chapters
+- ✅ **Original text preserved** in `original_text/` directory
+- ✅ **Chapter splitting automation** complete
+- ✅ **File organization** restructured for better workflow
 
 ---
 
@@ -228,9 +254,11 @@ When opening this project with AI assistants:
 1. ✅ Set up project structure
 2. ✅ Create AI instruction manuals
 3. ✅ Configure development environment
-4. ⬜ Define book outline in `.context/strategy.md`
-5. ⬜ Create first chapter
-6. ⬜ Develop automation scripts
+4. ✅ Split chapters into sub-chapter files
+5. ✅ Organize directory structure
+6. ⬜ Content editing and refinement
+7. ⬜ Add cross-references between sub-chapters
+8. ⬜ Develop additional automation scripts
 
 ---
 
